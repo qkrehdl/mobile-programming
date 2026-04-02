@@ -25,3 +25,4 @@ dependencyResolutionManagement {
 rootProject.name = "mp2601"
 include(":app")
 include(":mp04_stopwatch")
+include(":mp05_resources")
