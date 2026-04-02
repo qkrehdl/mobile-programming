@@ -1,4 +1,4 @@
-package com.example.mpex05
+package com.example.mp05_kakao
 
 import android.app.NotificationManager
 import android.content.BroadcastReceiver
@@ -12,7 +12,7 @@ class MyReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         val replyTxt = RemoteInput.getResultsFromIntent(intent)
             ?.getCharSequence("key_text_reply")
-        Log.d("mpex05","replyText:$replyTxt")
+        Log.d("mp05_kakao","replyText:$replyTxt")
         val manager = context.getSystemService(AppCompatActivity.NOTIFICATION_SERVICE)
                 as NotificationManager
         manager.cancel(11)
