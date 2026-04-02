@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
 
         val binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+         setContentView(binding.root)
 //        setContentView(R.layout.activity_main)
 
         binding.startButton.setOnClickListener {
