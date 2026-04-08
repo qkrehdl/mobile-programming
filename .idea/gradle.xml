@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/mp04_stopwatch" />
             <option value="$PROJECT_DIR$/mp05_kakao" />
             <option value="$PROJECT_DIR$/mp05_resources" />
+            <option value="$PROJECT_DIR$/mp0701_ANR" />
           </set>
         </option>
       </GradleProjectSettings>
