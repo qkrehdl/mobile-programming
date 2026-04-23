@@ -15,6 +15,11 @@
             <option value="$PROJECT_DIR$/mp05_resources" />
             <option value="$PROJECT_DIR$/mp06" />
             <option value="$PROJECT_DIR$/mp0701_ANR" />
+            <option value="$PROJECT_DIR$/mp0702_ToDo" />
+            <option value="$PROJECT_DIR$/mp0703_jukebox_player" />
+            <option value="$PROJECT_DIR$/mp0703_jukebox_service" />
+            <option value="$PROJECT_DIR$/mp0704" />
+            <option value="$PROJECT_DIR$/mp0705" />
           </set>
         </option>
       </GradleProjectSettings>
