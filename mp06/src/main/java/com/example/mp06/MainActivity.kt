@@ -46,9 +46,14 @@ class MainActivity : AppCompatActivity() {
         }
 
         setSupportActionBar(binding.toolbar)
-        // ToDo : ActionBarDrawerToggle
 
-        // ToDo : MyFragmentPagerAdapter 를 생성해서 viewpager.adapter에 바인딩
+        toggle = ActionBarDrawerToggle(this, binding.drawer, R.string.drawer_opened,
+            R.string.drawer_colsed)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        toggle.syncState()
+
+        val adapter = MyFragmentPagerAdapter(this)
+        binding.viewpager.adapter = adapter
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
