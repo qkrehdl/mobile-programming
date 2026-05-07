@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">mp0801</string>
+    <string name="toggle">토글</string>
+    <string name="Hello">안녕</string>
+    <string name="World">월드</string>
+    <string name="greeting">안녕하세요.</string>
+</resources>
