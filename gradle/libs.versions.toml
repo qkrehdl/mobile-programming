@@ -14,6 +14,13 @@ activityCompose = "1.13.0"
 navigationCompose = "2.9.8"
 composeBom = "2026.05.00"
 uiTest = "1.11.1"
+# Room
+playServicesAuth = "21.3.0"
+playServicesBase = "18.7.0"
+preferenceKtx = "1.2.1"
+datastorePreferences = "1.0.0"
+roomVersion = "2.7.1"
+ksp = "2.3.7"
 # Retrofit
 retrofit = "2.9.0"
 coilCompose = "2.5.0"
@@ -42,6 +49,21 @@ androidx-material3 = { group = "androidx.compose.material3", name = "material3" 
 androidx-material-icons-core = { group = "androidx.compose.material", name = "material-icons-core" }
 androidx-compose-ui-test = { group = "androidx.compose.ui", name = "ui-test", version.ref = "uiTest" }
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
+androidx-lifecycle-runtime-compose-android = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose-android", version.ref = "lifecycleRuntimeKtx" }
+androidx-preference-ktx = { module = "androidx.preference:preference-ktx", version.ref = "preferenceKtx" }
+androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastorePreferences" }
+# Room
+androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "roomVersion" }
+androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "roomVersion" }
+androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "roomVersion" }
+androidx-room-rxjava2 = { group = "androidx.room", name = "room-rxjava2", version.ref = "roomVersion" }
+androidx-room-rxjava3 = { group = "androidx.room", name = "room-rxjava3", version.ref = "roomVersion" }
+androidx-room-guava = { group = "androidx.room", name = "room-guava", version.ref = "roomVersion" }
+androidx-room-paging3 = { group = "androidx.room", name = "room-paging", version.ref = "roomVersion" }
+androidx-room-testing = { group = "androidx.room", name = "room-testing", version.ref = "roomVersion" }
+androidx-room-gradlePlugin = { group = "androidx.room", name = "room-gradle-plugin", version.ref = "roomVersion" }
+ksp-gradlePlugin = { group = "com.google.devtools.ksp", name = "com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
+ksp-symbol-processing-gradlePlugin = { group = "com.google.devtools.ksp", name = "symbol-processing-gradle-plugin", version.ref = "ksp" }
 # Retrofit
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
@@ -61,4 +83,5 @@ coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose"
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-
+room = { id = "androidx.room", version.ref = "roomVersion" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
