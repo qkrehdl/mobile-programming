@@ -14,6 +14,9 @@ class NoteRepository(private val noteDao: NoteDao) {
     val notesFlow: Flow<List<Note>> = noteDao.getAllNotes()
     suspend fun insert(note: Note) = noteDao.insert(note)
     suspend fun delete(note: Note) = noteDao.delete(note)
+
+    suspend fun deleteUndo(note: Note, timestamp: Long) = noteDao.deleteUndo(note.id, timestamp)
+    suspend fun undo() = noteDao.undo()
 }
 
 class NoteViewModel(application: Application) : AndroidViewModel(application) {
@@ -52,7 +55,7 @@ class NoteViewModel(application: Application) : AndroidViewModel(application) {
                 // TODO: Undo기능 추가
                 // 삭제 전에 저장
                 recentlyDeletedNote = note
-                repository.delete(note)
+                repository.deleteUndo(note, System.currentTimeMillis())
             } catch (e: Exception) {
                 // 에러 로그 출력 등
             }
@@ -63,10 +66,11 @@ class NoteViewModel(application: Application) : AndroidViewModel(application) {
     fun restoreNote() {
         viewModelScope.launch {
             try {
-                recentlyDeletedNote?.let { note ->
-                    repository.insert(note)
-                    recentlyDeletedNote = null
-                }
+                repository.undo()
+//                recentlyDeletedNote?.let { note ->
+//                    repository.insert(note)
+//                    recentlyDeletedNote = null
+//                }
             } catch (e: Exception) {
                 // 에러 로그 등
             }

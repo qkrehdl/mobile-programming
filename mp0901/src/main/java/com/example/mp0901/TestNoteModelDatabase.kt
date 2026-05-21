@@ -36,7 +36,7 @@ abstract class AppDatabase : RoomDatabase() {
 
 @Dao
 interface NoteDao {
-    @Query("SELECT * FROM notes ORDER BY id DESC")
+    @Query("SELECT * FROM notes WHERE state = 0 ORDER BY id DESC")
     fun getAllNotes(): Flow<List<Note>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -44,12 +44,20 @@ interface NoteDao {
 
     @Delete
     suspend fun delete(note: Note)
+
+    @Query( "UPDATE notes SET state = 1, timestamp = :timestamp WHERE id = :id" )
+    suspend fun deleteUndo(id: Int, timestamp: Long)
+
+    @Query( "UPDATE notes SET state = 0 WHERE state = 1 and id = (SELECT id FROM notes WHERE state = 1 ORDER BY timestamp DESC LIMIT 1)" )
+    suspend fun undo()
+
 }
 
 @Entity(tableName = "notes")
 data class Note(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val text: String,
+    val state: Int = 0,
     val timestamp: Long = System.currentTimeMillis()
 )
 
