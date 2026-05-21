@@ -1,11 +1,16 @@
 package com.example.mp0802.ui.composable
 
 import android.util.Log
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 import com.example.mp0802.MyApplication
 import com.example.mp0802.model.ItemModel
 import kotlinx.coroutines.Dispatchers
@@ -36,4 +41,11 @@ fun MainScreen(modifier: Modifier = Modifier){
     }
 
     // TODO:mp0802:LazyColumn 으로 뉴스 출력 하기
+    LazyColumn(modifier = modifier) {
+        itemsIndexed(datas.value){ index, item ->
+            Item(item)
+            if(index < datas.value.lastIndex)
+                HorizontalDivider(thickness = 1.dp, color = Color.Black)
+        }
+    }
 }
