@@ -2,25 +2,11 @@
 <project version="4">
   <component name="deploymentTargetSelector">
     <selectionStates>
-      <SelectionState runConfigName="app">
+      <SelectionState runConfigName="mp0705">
         <option name="selectionMode" value="DROPDOWN" />
+        <DialogSelection />
       </SelectionState>
-      <SelectionState runConfigName="mp04_stopwatch">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
-      <SelectionState runConfigName="mp05_resources">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
-      <SelectionState runConfigName="mp05_kakao">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
-      <SelectionState runConfigName="mp0701_ANR">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
-      <SelectionState runConfigName="mp06">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
-      <SelectionState runConfigName="mp0702_ToDo">
+      <SelectionState runConfigName="mp0801">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
       <SelectionState runConfigName="mp0703_jukebox_service">
@@ -29,24 +15,43 @@
       <SelectionState runConfigName="mp0704">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="mp0705">
+      <SelectionState runConfigName="mp0802">
         <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="mp0901">
+        <option name="selectionMode" value="DROPDOWN" />
+        <DropdownSelection timestamp="2026-05-21T07:16:39.148159200Z">
+          <Target type="DEFAULT_BOOT">
+            <handle>
+              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\pdoi1\.android\avd\Pixel_3a.avd" />
+            </handle>
+          </Target>
+        </DropdownSelection>
         <DialogSelection />
+      </SelectionState>
+      <SelectionState runConfigName="mp05_kakao">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="mp05_resources">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="app">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="mp04_stopwatch">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="mp0702_ToDo">
+        <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
       <SelectionState runConfigName="mp0703_jukebox_player">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="mp0801">
+      <SelectionState runConfigName="mp06">
         <option name="selectionMode" value="DROPDOWN" />
-        <DialogSelection />
       </SelectionState>
-      <SelectionState runConfigName="mp0802">
+      <SelectionState runConfigName="mp0701_ANR">
         <option name="selectionMode" value="DROPDOWN" />
-        <DialogSelection />
-      </SelectionState>
-      <SelectionState runConfigName="mp0901">
-        <option name="selectionMode" value="DROPDOWN" />
-        <DialogSelection />
       </SelectionState>
     </selectionStates>
   </component>

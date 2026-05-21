@@ -37,7 +37,7 @@ import kotlinx.coroutines.launch
 fun NoteScreen(modifier: Modifier = Modifier, viewModel: NoteViewModel) {
     val notes by viewModel.notes.collectAsStateWithLifecycle()
     var input by remember { mutableStateOf("") }
-    // TODO: undo기능 추가
+
     val snackbarHostState = remember { SnackbarHostState() }
     val scope = rememberCoroutineScope()
 
@@ -62,6 +62,11 @@ fun NoteScreen(modifier: Modifier = Modifier, viewModel: NoteViewModel) {
 
             Spacer(modifier = Modifier.height(16.dp))
 
+            // Stack에 저장된 삭제 메모를 순서대로 복구하는 확장 Undo 버튼
+            Button(onClick = { viewModel.restoreNote() }) {
+                Text("Undo")
+            }
+
             LazyColumn {
                 items(notes) { note ->
                     Row(
@@ -72,8 +77,8 @@ fun NoteScreen(modifier: Modifier = Modifier, viewModel: NoteViewModel) {
                         IconButton(onClick = {
                             viewModel.deleteNote(note)
                             // TODO: undo기능 추가
-                            // 삭제되었을 때 Snackbar 띄우기
                             scope.launch {
+                                snackbarHostState.currentSnackbarData?.dismiss()
                                 val result = snackbarHostState.showSnackbar(
                                     message = "메모가 삭제되었습니다",
                                     actionLabel = "UNDO",

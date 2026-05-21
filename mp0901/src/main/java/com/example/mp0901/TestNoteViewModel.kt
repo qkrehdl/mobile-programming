@@ -1,6 +1,7 @@
 package com.example.mp0901
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.Flow
@@ -8,7 +9,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-
+import java.util.Stack
 
 class NoteRepository(private val noteDao: NoteDao) {
     val notesFlow: Flow<List<Note>> = noteDao.getAllNotes()
@@ -17,13 +18,14 @@ class NoteRepository(private val noteDao: NoteDao) {
 }
 
 class NoteViewModel(application: Application) : AndroidViewModel(application) {
+
     private val repository: NoteRepository
+
     private val _notes = MutableStateFlow<List<Note>>(emptyList())
     val notes: StateFlow<List<Note>> = _notes.asStateFlow()
 
-    // TODO: Undo기능 추가
-    // 최근 삭제한 메모 저장
-    private var recentlyDeletedNote: Note? = null
+    // 여러 단계 Undo 저장
+    private val deletedNotesStack = Stack<Note>()
 
     init {
         val db = AppDatabase.getDatabase(application)
@@ -41,7 +43,7 @@ class NoteViewModel(application: Application) : AndroidViewModel(application) {
             try {
                 repository.insert(Note(text = text))
             } catch (e: Exception) {
-                // 에러 로그 출력 등
+                Log.e("NoteViewModel","추가 실패",e)
             }
         }
     }
@@ -49,26 +51,30 @@ class NoteViewModel(application: Application) : AndroidViewModel(application) {
     fun deleteNote(note: Note) {
         viewModelScope.launch {
             try {
-                // TODO: Undo기능 추가
-                // 삭제 전에 저장
-                recentlyDeletedNote = note
+                // 삭제 기록 저장
+                deletedNotesStack.push(note)
+
                 repository.delete(note)
+
             } catch (e: Exception) {
-                // 에러 로그 출력 등
+                Log.e("NoteViewModel","삭제 실패",e)
             }
         }
     }
 
-    // TODO: Undo기능 추가
     fun restoreNote() {
         viewModelScope.launch {
             try {
-                recentlyDeletedNote?.let { note ->
-                    repository.insert(note)
-                    recentlyDeletedNote = null
+                if (deletedNotesStack.isNotEmpty()) {
+
+                    val noteToRestore =
+                        deletedNotesStack.pop()
+
+                    repository.insert(noteToRestore)
                 }
+
             } catch (e: Exception) {
-                // 에러 로그 등
+                Log.e("NoteViewModel","복원 실패",e)
             }
         }
     }
