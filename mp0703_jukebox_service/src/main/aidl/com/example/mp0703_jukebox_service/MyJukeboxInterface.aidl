@@ -6,4 +6,3 @@ interface MyJukeboxInterface {
     void stop();
     int getMaxDuration();
 }
-
