@@ -3,6 +3,7 @@ package com.example.mp0702_ToDo
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.ActivityResultLauncher
@@ -52,7 +53,6 @@ class MainActivity : AppCompatActivity() {
             it.getStringArrayList("datas")?.toMutableList()
         } ?: mutableListOf()
 
-
         val layoutManager = LinearLayoutManager(this)
         binding.mainTodolist.layoutManager=layoutManager
         adapter = MyAdapter(datas)
@@ -60,5 +60,11 @@ class MainActivity : AppCompatActivity() {
         binding.mainTodolist.addItemDecoration(
             DividerItemDecoration(this, LinearLayoutManager.VERTICAL)
         )
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+
+        outState.putStringArrayList("datas", ArrayList(datas!!))
     }
 }
