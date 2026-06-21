@@ -43,6 +43,14 @@
       </SelectionState>
       <SelectionState runConfigName="mp0702_ToDo">
         <option name="selectionMode" value="DROPDOWN" />
+        <DropdownSelection timestamp="2026-06-20T15:31:06.563291600Z">
+          <Target type="DEFAULT_BOOT">
+            <handle>
+              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\pdoi1\.android\avd\Pixel_3a.avd" />
+            </handle>
+          </Target>
+        </DropdownSelection>
+        <DialogSelection />
       </SelectionState>
       <SelectionState runConfigName="mp0703_jukebox_player">
         <option name="selectionMode" value="DROPDOWN" />

@@ -58,6 +58,12 @@ fun NoteScreen(modifier: Modifier = Modifier, viewModel: NoteViewModel) {
                 }) {
                     Text("Add")
                 }
+                Button(onClick = {
+                    viewModel.restoreNote()
+                    input = ""
+                }) {
+                    Text("Undo")
+                }
             }
 
             Spacer(modifier = Modifier.height(16.dp))
