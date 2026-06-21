@@ -26,11 +26,25 @@ import java.util.Locale
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     lateinit var filePath: String
+    var imageUriString: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        imageUriString =
+            savedInstanceState?.getString(
+                "imageUri"
+            )
+
+        imageUriString?.let {
+
+            binding.userImageView
+                .setImageURI(
+                    Uri.parse(it)
+                )
+
+        }
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -41,6 +55,7 @@ class MainActivity : AppCompatActivity() {
             ActivityResultContracts.StartActivityForResult()
         ){ result ->
             val uri = result.data?.data ?: return@registerForActivityResult
+            imageUriString = uri.toString()
             try{
                 val imgSize = resources.getDimensionPixelSize(R.dimen.imgSize)
                 val options = BitmapFactory.Options().apply {
@@ -68,6 +83,7 @@ class MainActivity : AppCompatActivity() {
             // TODO: get camera file from filepath
             try {
                 val imageUri = Uri.fromFile(File(filePath))
+                imageUriString = imageUri.toString()
                 val imgSize = resources.getDimensionPixelSize(R.dimen.imgSize)
                 val options = BitmapFactory.Options().apply {
                     inSampleSize = calculateInSampleSize(imageUri, imgSize, imgSize)
@@ -133,5 +149,17 @@ class MainActivity : AppCompatActivity() {
             }
         }
         return inSampleSize
+    }
+    override fun onSaveInstanceState(
+        outState: Bundle
+    ) {
+
+        super.onSaveInstanceState(outState)
+
+        outState.putString(
+            "imageUri",
+            imageUriString
+        )
+
     }
 }
