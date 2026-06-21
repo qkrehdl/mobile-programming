@@ -52,7 +52,6 @@ class MainActivity : AppCompatActivity() {
             it.getStringArrayList("datas")?.toMutableList()
         } ?: mutableListOf()
 
-
         val layoutManager = LinearLayoutManager(this)
         binding.mainTodolist.layoutManager=layoutManager
         adapter = MyAdapter(datas)
