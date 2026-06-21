@@ -4,7 +4,7 @@ package com.example.mp0703_jukebox_service;
 // Declare any non-default types here with import statements
 
 interface MyJukeboxInterface {
-    void start();
+    void start(int songId);
     void stop();
     int getMaxDuration();
 }
